@@ -32,7 +32,7 @@ async function signUp(req, res) {
     const newUser = new Users({ email: email, passwordHash: hashedPassword, name: name , role: role });
     await newUser.save();
     const token = jwt.sign({ name:newUser.name, id: newUser._id, role: newUser.role }, SECRET_KEY, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' , sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' });
     res.status(201).json({ message: 'User registered successfully' });
 }
 
@@ -50,7 +50,11 @@ async function signIn(req, res) {
     }
 
     const token = jwt.sign({ name: user.name, id: user._id, role: user.role }, SECRET_KEY, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+    res.cookie('token', token, { 
+        httpOnly: true, 
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    });
     res.status(200).json({ message: 'Signed in successfully' });
 }
 
