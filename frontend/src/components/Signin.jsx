@@ -76,7 +76,7 @@ const SignUp = ({
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3000/api/auth/signup', {
+    fetch('https://real-estate-app-backend-g38w.onrender.com/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
