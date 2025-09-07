@@ -22,7 +22,7 @@ useEffect(()=>{
 useEffect(() => {
     const checkAuthStatus = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/protected', {
+            const response = await fetch('https://real-estate-app-backend-g38w.onrender.com/api/protected', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -41,7 +41,7 @@ const handleSignInButton = () => {
     navigate('/signin'); // Redirect to the Signin page
 }
 const handleSignOutButton = () => {
-    fetch('http://localhost:3000/api/auth/signout', {
+    fetch('https://real-estate-app-backend-g38w.onrender.com/api/auth/signout', {
         method: 'POST',
         credentials: 'include',
     })

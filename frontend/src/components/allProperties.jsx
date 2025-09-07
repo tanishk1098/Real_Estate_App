@@ -11,7 +11,7 @@ const AllProperties = () => {
     const[refetch,setRefetch]=useState(false);
     useEffect(() => {
 
-        fetch(`http://localhost:3000/api/appointments`, { credentials: 'include' }).then(response => {
+        fetch(`https://real-estate-app-backend-g38w.onrender.com/api/appointments`, { credentials: 'include' }).then(response => {
             if (response.ok) {
                 return response.json();
             }
@@ -23,7 +23,7 @@ const AllProperties = () => {
             console.error('Error fetching user data:', error);
         });
 
-        fetch('http://localhost:3000/api/properties', {
+        fetch('https://real-estate-app-backend-g38w.onrender.com/api/properties', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const AllProperties = () => {
             .then((response) => response.json())
             .then((data) => {
                 setProperties(data);
-                fetch('http://localhost:3000/api/wishlist', {
+                fetch('https://real-estate-app-backend-g38w.onrender.com/api/wishlist', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const AllProperties = () => {
     }, [refetch]);
 
     const handleAddToWishlist = (id) => {
-        fetch('http://localhost:3000/api/add-to-wishlist', {
+        fetch('https://real-estate-app-backend-g38w.onrender.com/api/add-to-wishlist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const AllProperties = () => {
     };
 
     const handleMakeAppointment = () => {
-       fetch(`http://localhost:3000/api/make-appointment`, {
+       fetch(`https://real-estate-app-backend-g38w.onrender.com/api/make-appointment`, {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json',

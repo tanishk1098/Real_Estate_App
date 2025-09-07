@@ -17,7 +17,7 @@ const Property = () => {
         const fetchProperty = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`http://localhost:3000/api/property/${propertyId}`, { credentials: 'include' });
+                const res = await fetch(`https://real-estate-app-backend-g38w.onrender.com/api/property/${propertyId}`, { credentials: 'include' });
                 const data = await res.json();
                 setProperty(data);
                 setForm(data);
@@ -36,7 +36,7 @@ const Property = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:3000/api/property/${propertyId}`, {
+            const res = await fetch(`https://real-estate-app-backend-g38w.onrender.com/api/property/${propertyId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
@@ -55,7 +55,7 @@ const Property = () => {
     const handleDelete = async () => {
         if (!window.confirm('Are you sure you want to delete this property?')) return;
         try {
-            const res = await fetch(`http://localhost:3000/api/property/${propertyId}`, { method: 'DELETE' ,credentials: 'include'});
+            const res = await fetch(`https://real-estate-app-backend-g38w.onrender.com/api/property/${propertyId}`, { method: 'DELETE' ,credentials: 'include'});
             if (res.ok) {
                 // Redirect or show message
                 alert('Property deleted');

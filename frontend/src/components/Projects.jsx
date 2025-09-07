@@ -9,7 +9,7 @@ const [cardsToShow, setCardsToShow] = useState(1);
 const [propertyData, setPropertyData] = useState([]);
 useEffect(()=>{
     console.log(propertyData);
-    fetch('http://localhost:3000/api/properties', {
+    fetch('https://real-estate-app-backend-g38w.onrender.com/api/properties', {
         method: 'GET',
         credentials: 'include',
     })

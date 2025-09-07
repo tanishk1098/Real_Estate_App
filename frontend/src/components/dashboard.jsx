@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 // Mock API calls (replace with real API integration)
 const fetchAgentProperties = async () =>{
-    const response = await fetch('http://localhost:3000/api/agent-properties',{credentials:"include"});
+    const response = await fetch('https://real-estate-app-backend-g38w.onrender.com/api/agent-properties',{credentials:"include"});
     if (!response.ok) {
         throw new Error('Failed to fetch agent properties');
     }
     return response.json();
 }
 const fetchSiteVisitRequests = async () => {
-    const response = await fetch('http://localhost:3000/api/agent-appointments',{credentials:"include"});
+    const response = await fetch('https://real-estate-app-backend-g38w.onrender.com/api/agent-appointments',{credentials:"include"});
     if (!response.ok) {
         throw new Error('Failed to fetch site visit requests');
     }
@@ -25,7 +25,7 @@ export default function AgentDashboard() {
     const navigate = useNavigate();
     const [reFetch, setReFetch] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:3000/api/protected',{credentials:"include"}).then(response => {
+        fetch('https://real-estate-app-backend-g38w.onrender.com/api/protected',{credentials:"include"}).then(response => {
             if (response.status !== 200) {
                 navigate('/signin');
                 return;
@@ -45,7 +45,7 @@ export default function AgentDashboard() {
     const handleAccept = (id) => {
         acceptRequest(id);
         setRequests(requests.map(r => r.id === id ? { ...r, status: 'Accepted' } : r));
-        fetch(`http://localhost:3000/api/agent-appointments/${id}`, {
+        fetch(`https://real-estate-app-backend-g38w.onrender.com/api/agent-appointments/${id}`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -60,7 +60,7 @@ export default function AgentDashboard() {
     const handleReject = (id) => {
         rejectRequest(id);
         setRequests(requests.map(r => r.id === id ? { ...r, status: 'Rejected' } : r));
-         fetch(`http://localhost:3000/api/agent-appointments/${id}`, {
+         fetch(`https://real-estate-app-backend-g38w.onrender.com/api/agent-appointments/${id}`, {
             method: 'POST',
             credentials: 'include',
             headers: {

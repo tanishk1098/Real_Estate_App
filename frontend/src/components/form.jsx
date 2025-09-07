@@ -93,7 +93,7 @@ export default function PropertyForm({ onSubmit }) {
             onSubmit(form);
         }
         setForm(initialState);
-        fetch('http://localhost:3000/api/properties', {
+        fetch('https://real-estate-app-backend-g38w.onrender.com/api/properties', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -14,10 +14,12 @@ mongoose.connect(process.env.MONGO_URL, {
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
+
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow all origins for simplicity; adjust in production
-    credentials: true
+    origin: 'https://real-estate-app-5ehe.onrender.com', // Allow all origins for simplicity; adjust in production
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
